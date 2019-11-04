@@ -39,10 +39,10 @@ class Feature:
     def addChild (self, *feats):
         for feat in feats:
             # First check the subfeature is of Class Feature 
+            if not hasattr(feat, 'Parent'):
+                continue
             if not isinstance(feat, Feature):
                 return("Cannot add feature as child. feature is not an instance of Feature class")
-            elif not feat.Parent:
-                continue
             # Now check that this is actually a Parent - Child relationship
             elif feat.Parent == self.ID:
                 self.subfeat.append(feat)
