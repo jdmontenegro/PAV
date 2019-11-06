@@ -30,7 +30,7 @@ if __name__ == "__main__":
         genes[ID] = {"tot":0, "pass":0}
         for i in range(len(coords["starts"])):
             region=contig+":"+coords["starts"][i]+"-"+coords["ends"][i]
-            for pos in pysam.depth('-aa', '-r', region, args.inbam):
+            for pos in pysam.depth('-aa', '-r', region, args.inbam, split_lines=True):
                 print(pos)
                 print(pos.join(""))
 #                genes[ID]["tot"] += 1
