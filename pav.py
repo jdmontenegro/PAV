@@ -40,7 +40,7 @@ if __name__ == "__main__":
     outfile.write(header)
     for gene in genes.keys():
     	state = 0
-    	if genes[gene]["pass"] / genes[gene]["tot"] >= args.min_frac:
+        if genes[gene]["tot"] >= 0 and genes[gene]["pass"] / genes[gene]["tot"] >= args.min_frac:
     		state = 1
     	line = str(gene)+"\t"+str(state)+"\t"+str(genes[gene]["pass"])+"\t"+str(genes[gene]["tot"])+"\n"
     	outfile.write(line)
