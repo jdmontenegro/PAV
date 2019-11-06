@@ -40,7 +40,7 @@ if __name__ == "__main__":
 #                if column.nsegments >= args.min_cov:
 #                    genes[ID]["pass"] += 1
     log="Analyzed "+str(len(genes))+" genes in file "+args.inbam+"\n"
-    print("log")
+    print(log)
     samfile.close()
     outfile = open(args.out, "w")
     header = "Gene\tPresence\tPassed\tTotal\n"
