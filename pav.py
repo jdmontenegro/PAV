@@ -29,18 +29,17 @@ if __name__ == "__main__":
         contig = gene.seqid
         genes[ID] = {"tot":0, "pass":0}
         for i in range(len(coords["starts"])):
-            tot=0
             for column in samfile.pileup(contig, int(coords["starts"][i]), int(coords["ends"][i]), truncate=True):
-                genes[ID]["tot"] = genes[ID]["tot"] + 1
+                genes[ID]["tot"] += 1
                 if column.nsegments >= args.min_cov:
-                    genes[ID]["pass"] = genes[ID]["pass"] + 1
+                    genes[ID]["pass"] += 1
     samfile.close()
     outfile = open(args.out, "w")
-    header = "Gene\tState\tPassed\tTotal\n"
+    header = "Gene\tPresence\tPassed\tTotal\n"
     outfile.write(header)
     for gene in genes.keys():
         state = 0
-        if genes[gene]["tot"] >= 0 and genes[gene]["pass"] / genes[gene]["tot"] >= args.min_frac:
+        if genes[gene]["tot"] > 0 and genes[gene]["pass"] / genes[gene]["tot"] >= args.min_frac:
             state = 1
         line = str(gene)+"\t"+str(state)+"\t"+str(genes[gene]["pass"])+"\t"+str(genes[gene]["tot"])+"\n"
         outfile.write(line)
