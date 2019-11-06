@@ -29,7 +29,7 @@ if __name__ == "__main__":
         contig = gene.seqid
         genes[ID] = {"tot":0, "pass":0}
         for i in range(len(coords["starts"])):
-            region=contig+":"+int(coords["starts"][i])+"-"+int(coords["ends"][i])
+            region=contig+":"+coords["starts"][i]+"-"+coords["ends"][i]
             for pos in samfile.depth('-aa', '-r', region):
                 genes[ID]["tot"] += 1
                 depth = pos.split("\t")[2]
@@ -39,6 +39,8 @@ if __name__ == "__main__":
 #                genes[ID]["tot"] += 1
 #                if column.nsegments >= args.min_cov:
 #                    genes[ID]["pass"] += 1
+    log="Analyzed "+str(len(genes))+" genes in file "+args.inbam+"\n"
+    print("log")
     samfile.close()
     outfile = open(args.out, "w")
     header = "Gene\tPresence\tPassed\tTotal\n"
