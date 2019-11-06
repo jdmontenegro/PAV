@@ -31,7 +31,7 @@ if __name__ == "__main__":
         for i in range(len(coords["starts"])):
             region=contig+":"+coords["starts"][i]+"-"+coords["ends"][i]
             for pos in pysam.depth('-aa', '-r', region, args.inbam):
-                print(pos)
+                print(pos.join(""))
 #                genes[ID]["tot"] += 1
 #                depth = pos.split("\t")[2]
 #                if depth >= args.min_cov:
