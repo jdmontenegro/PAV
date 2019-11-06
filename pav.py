@@ -30,7 +30,7 @@ if __name__ == "__main__":
         genes[ID] = {"tot":0, "pass":0}
         for i in range(len(coords["starts"])):
             region=contig+":"+coords["starts"][i]+"-"+coords["ends"][i]
-            for pos in samfile.depth('-aa', '-r', region):
+            for pos in pysam.depth('-aa', '-r', region, args.inbam):
                 genes[ID]["tot"] += 1
                 depth = pos.split("\t")[2]
                 if depth >= args.min_cov:
