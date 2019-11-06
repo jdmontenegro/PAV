@@ -2,7 +2,7 @@ This is a program to determine gene presence/absence variation based on read ali
 
 INSTALLATION
 
-  git clone github.com/jdmontenegro/PAV.git
+  git clone https://github.com/jdmontenegro/PAV.git
   cd PAV
   current=`pwd`
   cd $HOME/bin
